@@ -14,10 +14,16 @@ class DioHandler {
     required this.prettyDioLogger,
   });
 
+  // 🌐 Live Web Apphttp://smartac-frontend-1775237755.s3-website.eu-west-2.amazonaws.com
+  // // ⚙️ Backend APIhttp://13.135.205.116:8000
+  // // 📖 API Docshttp://13.135.205.116:8000/docs
+
   Dio createDio() {
     final dio = Dio(
       BaseOptions(
-        baseUrl: 'http://127.0.0.1:8000/',
+        // baseUrl: 'http://127.0.0.1:8000/',
+        baseUrl: 'http://13.135.205.116:8000/',
+
         receiveTimeout: Duration(minutes: 5),
         connectTimeout: Duration(minutes: 5),
         sendTimeout: Duration(minutes: 5),
