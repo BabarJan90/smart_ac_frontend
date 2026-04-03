@@ -1,122 +1,527 @@
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
+// import 'package:smart_ac/transactions_screen.dart';
+//
+// import 'app_theme.dart';
+// import 'dashboard_screen.dart';
+// import 'orchestrator_screen.dart';
+// import 'other_screens.dart';
+//
+// void main() {
+//   runApp(const SmartACApp());
+// }
+//
+// class SmartACApp extends StatelessWidget {
+//   const SmartACApp({super.key});
+//
+//   @override
+//   Widget build(BuildContext context) => MaterialApp(
+//     title: 'SmartAC',
+//     debugShowCheckedModeBanner: false,
+//     theme: AppTheme.dark,
+//     home: const AppShell(),
+//   );
+// }
+//
+// // ── App Shell — Adaptive Navigation ─────────────────────────────────────────
+// // On mobile: bottom navigation bar
+// // On tablet/desktop: side navigation rail
+//
+// class AppShell extends StatefulWidget {
+//   const AppShell({super.key});
+//
+//   @override
+//   State<AppShell> createState() => _AppShellState();
+// }
+//
+// class _AppShellState extends State<AppShell> {
+//   int _selectedIndex = 0;
+//
+//   final _screens = const [
+//     DashboardScreen(),
+//     TransactionsScreen(),
+//     OrchestratorScreen(),
+//     DocumentsScreen(),
+//     AuditLogScreen(),
+//   ];
+//
+//   final _destinations = const [
+//     NavigationItem(
+//       icon: Icons.dashboard_outlined,
+//       selectedIcon: Icons.dashboard,
+//       label: 'Dashboard',
+//     ),
+//     NavigationItem(
+//       icon: Icons.receipt_long_outlined,
+//       selectedIcon: Icons.receipt_long,
+//       label: 'Transactions',
+//     ),
+//     NavigationItem(
+//       icon: Icons.psychology_outlined,
+//       selectedIcon: Icons.psychology,
+//       label: 'Orchestrator',
+//     ),
+//     NavigationItem(
+//       icon: Icons.description_outlined,
+//       selectedIcon: Icons.description,
+//       label: 'Documents',
+//     ),
+//     NavigationItem(
+//       icon: Icons.history_outlined,
+//       selectedIcon: Icons.history,
+//       label: 'Audit Log',
+//     ),
+//   ];
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     final width = MediaQuery.of(context).size.width;
+//     final isWide = width > 700; // tablet / desktop
+//
+//     if (isWide) {
+//       return _buildWideLayout();
+//     } else {
+//       return _buildMobileLayout();
+//     }
+//   }
+//
+//   // ── Wide Layout (tablet/desktop) — side rail ──────────────────────────────
+//   Widget _buildWideLayout() => Scaffold(
+//     body: Row(
+//       children: [
+//         // Navigation Rail
+//         Container(
+//           color: AppTheme.surface,
+//           child: NavigationRail(
+//             selectedIndex: _selectedIndex,
+//             onDestinationSelected: (i) => setState(() => _selectedIndex = i),
+//             extended: MediaQuery.of(context).size.width > 1000,
+//             leading: Padding(
+//               padding: const EdgeInsets.symmetric(vertical: 20),
+//               child: Column(
+//                 children: [
+//                   Container(
+//                     padding: const EdgeInsets.all(10),
+//                     decoration: BoxDecoration(
+//                       color: AppTheme.accentGlow,
+//                       borderRadius: BorderRadius.circular(12),
+//                     ),
+//                     child: const Icon(
+//                       Icons.account_balance,
+//                       color: AppTheme.accent,
+//                       size: 24,
+//                     ),
+//                   ),
+//                   const SizedBox(height: 4),
+//                   if (MediaQuery.of(context).size.width > 1000)
+//                     const Text(
+//                       'SmartAC',
+//                       style: TextStyle(
+//                         color: AppTheme.textPrimary,
+//                         fontWeight: FontWeight.w700,
+//                         fontSize: 16,
+//                       ),
+//                     ),
+//                 ],
+//               ),
+//             ),
+//             destinations: _destinations
+//                 .map(
+//                   (d) => NavigationRailDestination(
+//                     icon: Icon(d.icon),
+//                     selectedIcon: Icon(d.selectedIcon),
+//                     label: Text(d.label),
+//                   ),
+//                 )
+//                 .toList(),
+//           ),
+//         ),
+//         // Vertical divider
+//         const VerticalDivider(width: 1),
+//         // Screen content
+//         Expanded(child: _buildScreenWithHeader()),
+//       ],
+//     ),
+//   );
+//
+//   // ── Mobile Layout — bottom nav ────────────────────────────────────────────
+//   Widget _buildMobileLayout() => Scaffold(
+//     appBar: AppBar(
+//       title: Row(
+//         children: [
+//           Container(
+//             padding: const EdgeInsets.all(6),
+//             decoration: BoxDecoration(
+//               color: AppTheme.accentGlow,
+//               borderRadius: BorderRadius.circular(8),
+//             ),
+//             child: const Icon(
+//               Icons.account_balance,
+//               color: AppTheme.accent,
+//               size: 16,
+//             ),
+//           ),
+//           const SizedBox(width: 8),
+//           Text(
+//             _destinations[_selectedIndex].label,
+//             style: const TextStyle(
+//               color: AppTheme.textPrimary,
+//               fontSize: 18,
+//               fontWeight: FontWeight.w600,
+//             ),
+//           ),
+//         ],
+//       ),
+//     ),
+//     body: _screens[_selectedIndex],
+//     bottomNavigationBar: NavigationBar(
+//       selectedIndex: _selectedIndex,
+//       onDestinationSelected: (i) => setState(() => _selectedIndex = i),
+//       backgroundColor: AppTheme.surface,
+//       indicatorColor: AppTheme.accentGlow,
+//       destinations: _destinations
+//           .map(
+//             (d) => NavigationDestination(
+//               icon: Icon(d.icon, color: AppTheme.textSecond),
+//               selectedIcon: Icon(d.selectedIcon, color: AppTheme.accent),
+//               label: d.label,
+//             ),
+//           )
+//           .toList(),
+//     ),
+//   );
+//
+//   Widget _buildScreenWithHeader() => Column(
+//     children: [
+//       // Header bar for wide layout
+//       Container(
+//         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+//         decoration: const BoxDecoration(
+//           border: Border(bottom: BorderSide(color: AppTheme.border)),
+//         ),
+//         child: Row(
+//           children: [
+//             Text(
+//               _destinations[_selectedIndex].label,
+//               style: const TextStyle(
+//                 color: AppTheme.textPrimary,
+//                 fontSize: 20,
+//                 fontWeight: FontWeight.w600,
+//               ),
+//             ),
+//             const Spacer(),
+//             // Status indicator
+//             Container(
+//               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+//               decoration: BoxDecoration(
+//                 color: AppTheme.success.withOpacity(0.1),
+//                 borderRadius: BorderRadius.circular(20),
+//                 border: Border.all(color: AppTheme.success.withOpacity(0.3)),
+//               ),
+//               child: Row(
+//                 children: [
+//                   Container(
+//                     width: 6,
+//                     height: 6,
+//                     decoration: const BoxDecoration(
+//                       color: AppTheme.success,
+//                       shape: BoxShape.circle,
+//                     ),
+//                   ),
+//                   const SizedBox(width: 6),
+//                   const Text(
+//                     'Backend connected',
+//                     style: TextStyle(
+//                       color: AppTheme.success,
+//                       fontSize: 12,
+//                       fontWeight: FontWeight.w500,
+//                     ),
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//       Expanded(child: _screens[_selectedIndex]),
+//     ],
+//   );
+// }
+//
+// class NavigationItem {
+//   final IconData icon;
+//   final IconData selectedIcon;
+//   final String label;
+//   const NavigationItem({
+//     required this.icon,
+//     required this.selectedIcon,
+//     required this.label,
+//   });
+// }
 
-void main() {
-  runApp(const MyApp());
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
+import 'package:smart_ac/app_theme.dart';
+import 'package:smart_ac/di/injector.dart';
+
+import 'features/audit_log/cubit/audit_log_cubit.dart';
+import 'features/audit_log/screen/audit_log_screen.dart';
+import 'features/dashboard/cubit/dashboard_cubit.dart';
+import 'features/dashboard/screen/dashboard_screen.dart';
+import 'features/documents/cubit/documents_cubit.dart';
+import 'features/documents/screen/documents_screen.dart';
+import 'features/orchestrator/cubit/orchestrator_cubit.dart';
+import 'features/orchestrator/screen/orchestrator_screen.dart';
+import 'features/transactions/cubit/transactions_cubit.dart';
+import 'features/transactions/screen/transactions_screen.dart';
+
+final getIt = GetIt.instance;
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await injectDependencies();
+
+  runApp(const SmartACApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class SmartACApp extends StatelessWidget {
+  const SmartACApp({super.key});
 
-  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) => MaterialApp(
+    title: 'SmartAC',
+    debugShowCheckedModeBanner: false,
+    theme: AppTheme.dark,
+    home: const AppShell(),
+  );
+}
+
+class AppShell extends StatefulWidget {
+  const AppShell({super.key});
+
+  @override
+  State<AppShell> createState() => _AppShellState();
+}
+
+class _AppShellState extends State<AppShell> {
+  int _selectedIndex = 0;
+
+  final _destinations = const [
+    NavigationItem(
+      icon: Icons.dashboard_outlined,
+      selectedIcon: Icons.dashboard,
+      label: 'Dashboard',
+    ),
+    NavigationItem(
+      icon: Icons.receipt_long_outlined,
+      selectedIcon: Icons.receipt_long,
+      label: 'Transactions',
+    ),
+    NavigationItem(
+      icon: Icons.psychology_outlined,
+      selectedIcon: Icons.psychology,
+      label: 'Orchestrator',
+    ),
+    NavigationItem(
+      icon: Icons.description_outlined,
+      selectedIcon: Icons.description,
+      label: 'Documents',
+    ),
+    NavigationItem(
+      icon: Icons.history_outlined,
+      selectedIcon: Icons.history,
+      label: 'Audit Log',
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    final isWide = MediaQuery.of(context).size.width > 700;
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (_) => getIt<DashboardCubit>()),
+        BlocProvider(create: (_) => getIt<TransactionsCubit>()),
+        BlocProvider(create: (_) => getIt<OrchestratorCubit>()),
+        BlocProvider(create: (_) => getIt<DocumentsCubit>()),
+        BlocProvider(create: (_) => getIt<AuditLogCubit>()),
+      ],
+      child: isWide ? _buildWideLayout() : _buildMobileLayout(),
     );
   }
-}
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  Widget _currentScreen() => switch (_selectedIndex) {
+    0 => const DashboardScreen(),
+    1 => const TransactionsScreen(),
+    2 => const OrchestratorScreen(),
+    3 => const DocumentsScreen(),
+    4 => const AuditLogScreen(),
+    _ => const DashboardScreen(),
+  };
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
+  Widget _buildWideLayout() => Scaffold(
+    body: Row(
+      children: [
+        Container(
+          color: AppTheme.surface,
+          child: NavigationRail(
+            selectedIndex: _selectedIndex,
+            onDestinationSelected: (i) => setState(() => _selectedIndex = i),
+            extended: MediaQuery.of(context).size.width > 1000,
+            leading: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 20),
+              child: Column(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: AppTheme.accentGlow,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: const Icon(
+                      Icons.account_balance,
+                      color: AppTheme.accent,
+                      size: 24,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  if (MediaQuery.of(context).size.width > 1000)
+                    const Text(
+                      'SmartAC',
+                      style: TextStyle(
+                        color: AppTheme.textPrimary,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 16,
+                      ),
+                    ),
+                ],
+              ),
+            ),
+            destinations: _destinations
+                .map(
+                  (d) => NavigationRailDestination(
+                    icon: Icon(d.icon),
+                    selectedIcon: Icon(d.selectedIcon),
+                    label: Text(d.label),
+                  ),
+                )
+                .toList(),
+          ),
+        ),
+        const VerticalDivider(width: 1),
+        Expanded(child: _buildScreenWithHeader()),
+      ],
+    ),
+  );
 
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+  Widget _buildMobileLayout() => Scaffold(
+    appBar: AppBar(
+      title: Row(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(6),
+            decoration: BoxDecoration(
+              color: AppTheme.accentGlow,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: const Icon(
+              Icons.account_balance,
+              color: AppTheme.accent,
+              size: 16,
+            ),
+          ),
+          const SizedBox(width: 8),
+          Text(
+            _destinations[_selectedIndex].label,
+            style: const TextStyle(
+              color: AppTheme.textPrimary,
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ],
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
+    ),
+    body: _currentScreen(),
+    bottomNavigationBar: NavigationBar(
+      selectedIndex: _selectedIndex,
+      onDestinationSelected: (i) => setState(() => _selectedIndex = i),
+      backgroundColor: AppTheme.surface,
+      indicatorColor: AppTheme.accentGlow,
+      destinations: _destinations
+          .map(
+            (d) => NavigationDestination(
+              icon: Icon(d.icon, color: AppTheme.textSecond),
+              selectedIcon: Icon(d.selectedIcon, color: AppTheme.accent),
+              label: d.label,
+            ),
+          )
+          .toList(),
+    ),
+  );
+
+  Widget _buildScreenWithHeader() => Column(
+    children: [
+      Container(
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+        decoration: const BoxDecoration(
+          border: Border(bottom: BorderSide(color: AppTheme.border)),
+        ),
+        child: Row(
+          children: [
             Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+              _destinations[_selectedIndex].label,
+              style: const TextStyle(
+                color: AppTheme.textPrimary,
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+            const Spacer(),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+              decoration: BoxDecoration(
+                color: AppTheme.success.withOpacity(0.1),
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(color: AppTheme.success.withOpacity(0.3)),
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    width: 6,
+                    height: 6,
+                    decoration: const BoxDecoration(
+                      color: AppTheme.success,
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+                  const SizedBox(width: 6),
+                  const Text(
+                    'Backend connected',
+                    style: TextStyle(
+                      color: AppTheme.success,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
+      Expanded(child: _currentScreen()),
+    ],
+  );
+}
+
+class NavigationItem {
+  final IconData icon;
+  final IconData selectedIcon;
+  final String label;
+
+  const NavigationItem({
+    required this.icon,
+    required this.selectedIcon,
+    required this.label,
+  });
 }

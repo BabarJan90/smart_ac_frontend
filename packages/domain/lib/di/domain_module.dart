@@ -8,4 +8,4 @@ import 'package:injectable/injectable.dart';
 void initDomainModule() {}
 
 @module
-abstract class DomainPackageModule {}
+abstract class DomainModule {}

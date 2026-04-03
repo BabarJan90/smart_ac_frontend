@@ -1,7 +1,5 @@
-import 'dart:io';
-
 import 'package:domain/domain.dart';
-import 'package:domain/model/chatbot_messages.dart';
+import 'package:domain/model/data_list.dart';
 import 'package:domain/repository/repository.dart';
 
 ///
@@ -9,16 +7,46 @@ import 'package:domain/repository/repository.dart';
 ///
 abstract class SmartACApiRepository extends Repository {
   ///
-  /// download file from url
+  /// Get Transactions
   ///
-  Future<Result> downloadFileFromUrl(String fileUrl, Directory appDocDir);
+  Future<Result<DataList<Transaction>>> getTransactions({
+    int limit = 100,
+    String? riskFilter,
+  });
 
   ///
-  /// Ask query via chatbot
+  /// Get Stats
   ///
-  Future<Result<ChatbotMessage>> chat(
-    String query,
-    String jobId,
-    List<Map<String, String>> history,
-  );
+  Future<Result<AccountStats>> getStats();
+
+  ///
+  /// Analyse All
+  ///
+  Future<void> analyseAll();
+
+  ///
+  /// Get Documents
+  ///
+  Future<Result<DataList<AccountDocument>>> getDocuments();
+
+  ///
+  /// Get One Document
+  ///
+  Future<Result<AccountDocument>> getDocument(int documentId);
+
+  ///
+  /// Get Audit Log
+  ///
+  Future<Result<DataList<AuditEntry>>> getAuditLog();
+
+  ///
+  /// run Orchestrator
+  ///
+  Future<Result<OrchestratorResult>> runOrchestrator({String? clientName});
+
+  ///
+  /// Run Reviewer Assist
+  ///
+  // Future<Result<Map<String, dynamic>>> runReviewerAssist();
+  Future<void> runReviewerAssist();
 }

@@ -17,10 +17,6 @@ class KernelPackageModule extends _i526.MicroPackageModule {
     final kernelModule = _$KernelModule();
     gh.factory<_i974.PrettyPrinter>(() => kernelModule.getLoggerPrinter());
     gh.factory<_i974.LogFilter>(() => kernelModule.getLoggerFilter());
-    gh.singleton<_i974.Logger>(() => kernelModule.getLogger(
-          gh<_i974.PrettyPrinter>(),
-          gh<_i974.LogFilter>(),
-        ));
   }
 }
 

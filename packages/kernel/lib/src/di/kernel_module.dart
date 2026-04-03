@@ -22,7 +22,7 @@ abstract class KernelModule {
   @factoryMethod
   LogFilter getLoggerFilter() => LoggerFilter(enableLogger: !kReleaseMode);
 
-  @singleton
-  Logger getLogger(PrettyPrinter printer, LogFilter filter) =>
-      Logger(printer: printer, filter: filter);
+  // @singleton
+  // Logger getLogger(PrettyPrinter printer, LogFilter filter) =>
+  //     Logger(printer: printer, filter: filter);
 }

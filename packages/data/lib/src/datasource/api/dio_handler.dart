@@ -17,8 +17,7 @@ class DioHandler {
   Dio createDio() {
     final dio = Dio(
       BaseOptions(
-        baseUrl: 'https://tym24-ai-the-dentist.hf.space/',
-        // baseUrl: 'https://babar24134-the-dental-studio.hf.space/',
+        baseUrl: 'http://127.0.0.1:8000/',
         receiveTimeout: Duration(minutes: 5),
         connectTimeout: Duration(minutes: 5),
         sendTimeout: Duration(minutes: 5),
