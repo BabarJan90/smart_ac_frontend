@@ -80,6 +80,10 @@ test:
 		cd "$$OLDPWD"; \
 	done
 	@echo "${G}Tests have passed successfully${NOCOLOR}"
+
+app-icon:
+	dart run flutter_launcher_icons
+	@echo "${G}App Icon created successfully${NOCOLOR}"
 #
 #analyze:
 #	@for file in $(PUBSPEC_FILES); do \

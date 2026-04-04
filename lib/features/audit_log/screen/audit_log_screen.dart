@@ -45,7 +45,7 @@ class _AuditLogScreenState extends State<AuditLogScreen> {
   Widget _buildGdprBanner() => Container(
     width: double.infinity,
     padding: const EdgeInsets.all(12),
-    color: AppTheme.success.withOpacity(0.08),
+    color: AppTheme.success.withAlpha(20),
     child: const Row(
       children: [
         Icon(Icons.verified_user, color: AppTheme.success, size: 16),

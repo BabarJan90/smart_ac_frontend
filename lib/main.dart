@@ -213,9 +213,9 @@
 //             Container(
 //               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
 //               decoration: BoxDecoration(
-//                 color: AppTheme.success.withOpacity(0.1),
+//                 color: AppTheme.success.withAlpha(26),
 //                 borderRadius: BorderRadius.circular(20),
-//                 border: Border.all(color: AppTheme.success.withOpacity(0.3)),
+//                 border: Border.all(color: AppTheme.success.withAlpha(77)),
 //               ),
 //               child: Row(
 //                 children: [
@@ -480,9 +480,9 @@ class _AppShellState extends State<AppShell> {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
               decoration: BoxDecoration(
-                color: AppTheme.success.withOpacity(0.1),
+                color: AppTheme.success.withAlpha(26),
                 borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: AppTheme.success.withOpacity(0.3)),
+                border: Border.all(color: AppTheme.success.withAlpha(77)),
               ),
               child: Row(
                 children: [

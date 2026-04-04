@@ -31,9 +31,9 @@ class OrchestratorResultView extends StatelessWidget {
   Widget _buildSummaryCard() => Container(
     padding: const EdgeInsets.all(20),
     decoration: BoxDecoration(
-      color: AppTheme.success.withOpacity(0.08),
+      color: AppTheme.success.withAlpha(20),
       borderRadius: BorderRadius.circular(16),
-      border: Border.all(color: AppTheme.success.withOpacity(0.3)),
+      border: Border.all(color: AppTheme.success.withAlpha(77)),
     ),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -142,7 +142,7 @@ class OrchestratorResultView extends StatelessWidget {
     decoration: BoxDecoration(
       color: AppTheme.surface,
       borderRadius: BorderRadius.circular(16),
-      border: Border.all(color: AppTheme.danger.withOpacity(0.3)),
+      border: Border.all(color: AppTheme.danger.withAlpha(77)),
     ),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,

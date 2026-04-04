@@ -50,7 +50,7 @@ class _OrchestratorScreenState extends State<OrchestratorScreen> {
       Container(
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
-          color: AppTheme.accent.withOpacity(0.15),
+          color: AppTheme.accent.withAlpha(38),
           borderRadius: BorderRadius.circular(12),
         ),
         child: const Icon(Icons.psychology, color: AppTheme.accent, size: 22),
@@ -71,6 +71,31 @@ class _OrchestratorScreenState extends State<OrchestratorScreen> {
             'Sense → Plan → Act → Report',
             style: TextStyle(color: AppTheme.textSecond, fontSize: 13),
           ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Sense: reads accounts',
+                style: TextStyle(color: AppTheme.textSecond, fontSize: 10),
+              ),
+
+              Text(
+                'Plan: decides which agents to run',
+                style: TextStyle(color: AppTheme.textSecond, fontSize: 10),
+              ),
+
+              Text(
+                'Act: executes AI agents automatically',
+                style: TextStyle(color: AppTheme.textSecond, fontSize: 10),
+              ),
+
+              Text(
+                'Report: summarises all findings',
+                style: TextStyle(color: AppTheme.textSecond, fontSize: 10),
+              ),
+            ],
+          ),
         ],
       ),
     ],
@@ -81,7 +106,7 @@ class _OrchestratorScreenState extends State<OrchestratorScreen> {
     decoration: BoxDecoration(
       color: AppTheme.accentGlow,
       borderRadius: BorderRadius.circular(16),
-      border: Border.all(color: AppTheme.accent.withOpacity(0.2)),
+      border: Border.all(color: AppTheme.accent.withAlpha(51)),
     ),
     child: const Column(
       children: [
@@ -196,7 +221,7 @@ class _OrchestratorScreenState extends State<OrchestratorScreen> {
     decoration: BoxDecoration(
       color: AppTheme.surface,
       borderRadius: BorderRadius.circular(16),
-      border: Border.all(color: AppTheme.accent.withOpacity(0.3)),
+      border: Border.all(color: AppTheme.accent.withAlpha(77)),
     ),
     child: const Column(
       children: [
@@ -217,9 +242,9 @@ class _OrchestratorScreenState extends State<OrchestratorScreen> {
   Widget _buildError(String message) => Container(
     padding: const EdgeInsets.all(16),
     decoration: BoxDecoration(
-      color: AppTheme.danger.withOpacity(0.08),
+      color: AppTheme.danger.withAlpha(20),
       borderRadius: BorderRadius.circular(12),
-      border: Border.all(color: AppTheme.danger.withOpacity(0.3)),
+      border: Border.all(color: AppTheme.danger.withAlpha(77)),
     ),
     child: Row(
       children: [

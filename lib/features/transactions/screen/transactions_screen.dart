@@ -106,7 +106,7 @@ class _TransactionsScreenState extends State<TransactionsScreen> {
         duration: const Duration(milliseconds: 200),
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
         decoration: BoxDecoration(
-          color: selected ? color.withOpacity(0.15) : AppTheme.surface,
+          color: selected ? color.withAlpha(38) : AppTheme.surface,
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
             color: selected ? color : AppTheme.border,

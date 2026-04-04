@@ -3,17 +3,17 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   // ── Colour Palette ──────────────────────────────────────────────────────
-  static const Color background   = Color(0xFF0A0E1A);  // deep navy
-  static const Color surface      = Color(0xFF111827);  // card bg
-  static const Color surfaceLight = Color(0xFF1C2537);  // elevated card
-  static const Color accent       = Color(0xFF3B82F6);  // electric blue
-  static const Color accentGlow   = Color(0x333B82F6);  // blue glow
-  static const Color success      = Color(0xFF10B981);  // green
-  static const Color warning      = Color(0xFFF59E0B);  // amber
-  static const Color danger       = Color(0xFFEF4444);  // red
-  static const Color textPrimary  = Color(0xFFF1F5F9);  // near white
-  static const Color textSecond   = Color(0xFF94A3B8);  // muted
-  static const Color border       = Color(0xFF1E293B);  // subtle border
+  static const Color background = Color(0xFF0A0E1A); // deep navy
+  static const Color surface = Color(0xFF111827); // card bg
+  static const Color surfaceLight = Color(0xFF1C2537); // elevated card
+  static const Color accent = Color(0xFF3B82F6); // electric blue
+  static const Color accentGlow = Color(0x333B82F6); // blue glow
+  static const Color success = Color(0xFF10B981); // green
+  static const Color warning = Color(0xFFF59E0B); // amber
+  static const Color danger = Color(0xFFEF4444); // red
+  static const Color textPrimary = Color(0xFFF1F5F9); // near white
+  static const Color textSecond = Color(0xFF94A3B8); // muted
+  static const Color border = Color(0xFF1E293B); // subtle border
 
   static ThemeData get dark => ThemeData(
     useMaterial3: true,
@@ -28,26 +28,33 @@ class AppTheme {
     textTheme: GoogleFonts.spaceGroteskTextTheme(
       const TextTheme(
         displayLarge: TextStyle(
-          color: textPrimary, fontSize: 32,
-          fontWeight: FontWeight.w700, letterSpacing: -0.5,
+          color: textPrimary,
+          fontSize: 32,
+          fontWeight: FontWeight.w700,
+          letterSpacing: -0.5,
         ),
         displayMedium: TextStyle(
-          color: textPrimary, fontSize: 24,
+          color: textPrimary,
+          fontSize: 24,
           fontWeight: FontWeight.w600,
         ),
         titleLarge: TextStyle(
-          color: textPrimary, fontSize: 18,
+          color: textPrimary,
+          fontSize: 18,
           fontWeight: FontWeight.w600,
         ),
         titleMedium: TextStyle(
-          color: textPrimary, fontSize: 16,
+          color: textPrimary,
+          fontSize: 16,
           fontWeight: FontWeight.w500,
         ),
         bodyLarge: TextStyle(color: textPrimary, fontSize: 15),
         bodyMedium: TextStyle(color: textSecond, fontSize: 13),
         labelLarge: TextStyle(
-          color: accent, fontSize: 13,
-          fontWeight: FontWeight.w600, letterSpacing: 0.5,
+          color: accent,
+          fontSize: 13,
+          fontWeight: FontWeight.w600,
+          letterSpacing: 0.5,
         ),
       ),
     ),
@@ -65,7 +72,8 @@ class AppTheme {
       centerTitle: false,
       iconTheme: IconThemeData(color: textPrimary),
       titleTextStyle: TextStyle(
-        color: textPrimary, fontSize: 18,
+        color: textPrimary,
+        fontSize: 18,
         fontWeight: FontWeight.w600,
       ),
     ),
@@ -99,19 +107,27 @@ class AppTheme {
   // ── Risk Colours ─────────────────────────────────────────────────────────
   static Color riskColor(String? label) {
     switch (label?.toLowerCase()) {
-      case 'high':   return danger;
-      case 'medium': return warning;
-      case 'low':    return success;
-      default:       return textSecond;
+      case 'high':
+        return danger;
+      case 'medium':
+        return warning;
+      case 'low':
+        return success;
+      default:
+        return textSecond;
     }
   }
 
   static Color riskBg(String? label) {
     switch (label?.toLowerCase()) {
-      case 'high':   return danger.withOpacity(0.12);
-      case 'medium': return warning.withOpacity(0.12);
-      case 'low':    return success.withOpacity(0.12);
-      default:       return surfaceLight;
+      case 'high':
+        return danger.withAlpha(31);
+      case 'medium':
+        return warning.withAlpha(31);
+      case 'low':
+        return success.withAlpha(31);
+      default:
+        return surfaceLight;
     }
   }
 }

@@ -86,7 +86,7 @@ class TransactionDetailView extends StatelessWidget {
               decoration: BoxDecoration(
                 color: AppTheme.accentGlow,
                 borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: AppTheme.accent.withOpacity(0.2)),
+                border: Border.all(color: AppTheme.accent.withAlpha(51)),
               ),
               child: Text(
                 transaction.explanation,

@@ -23,7 +23,7 @@ class TransactionItemView extends StatelessWidget {
           borderRadius: BorderRadius.circular(14),
           border: Border.all(
             color: transaction.isAnomaly
-                ? AppTheme.danger.withOpacity(0.4)
+                ? AppTheme.danger.withAlpha(102)
                 : AppTheme.border,
           ),
         ),
