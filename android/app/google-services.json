@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "640909574959",
+    "project_id": "essex-smart-ac",
+    "storage_bucket": "essex-smart-ac.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:640909574959:android:bdd201beb26364b1ab57da",
+        "android_client_info": {
+          "package_name": "essex.ai.smart_ac"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvCyTb5dM0P9Y0OgrfrYKeubuo1td-0xI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
