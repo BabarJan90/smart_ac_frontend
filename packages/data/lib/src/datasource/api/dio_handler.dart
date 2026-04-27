@@ -14,15 +14,16 @@ class DioHandler {
     required this.prettyDioLogger,
   });
 
-  // 🌐 Live Web Apphttp://smartac-frontend-1775237755.s3-website.eu-west-2.amazonaws.com
-  // // ⚙️ Backend APIhttp://13.135.205.116:8000
-  // // 📖 API Docshttp://13.135.205.116:8000/docs
+  //  Live Web Apphttp://smartac-frontend-1775237755.s3-website.eu-west-2.amazonaws.com
+  // // ️ Backend APIhttp://13.135.205.116:8000
+  // //  API Docshttps://marked-deadline-saturday-ensure.trycloudflare.com/docs
 
   Dio createDio() {
     final dio = Dio(
       BaseOptions(
         // baseUrl: 'http://127.0.0.1:8000/',
         baseUrl: 'http://13.135.205.116:8000/',
+        // baseUrl: 'https://marked-deadline-saturday-ensure.trycloudflare.com/',
         // baseUrl: 'https://certainly-dweeb-wife.ngrok-free.app/',
         receiveTimeout: Duration(minutes: 5),
         connectTimeout: Duration(minutes: 5),

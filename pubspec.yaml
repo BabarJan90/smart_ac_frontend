@@ -11,27 +11,27 @@ dependencies:
   flutter:
     sdk: flutter
   # tools
-  logger: 2.6.1
-  equatable: 2.0.7
-  injectable: 2.5.2
-  flutter_hooks: 0.21.3
+  logger: 2.7.0
+  equatable: 2.0.8
+  injectable: 2.7.1+4
+#  flutter_hooks: 0.21.3
   freezed_annotation: 3.1.0
   intl: 0.20.2
 
   # state management
-  bloc: 9.0.0
+  bloc: 9.2.0
   flutter_bloc: 9.1.1
-  firebase_core: 4.4.0
+  firebase_core: 4.7.0
 #  firebase_ai: 3.8.0
 
-  fluttertoast: 8.2.12
+  fluttertoast: 9.0.0
   path_provider: 2.1.5
   url_launcher: 6.3.2
-  multi_dropdown: 3.0.1
-  pdfrx: 2.2.8
-  share_plus: 12.0.1
-  markdown_widget: 2.3.2+8
-  get_it: 7.2.0
+#  multi_dropdown: 3.0.1
+#  pdfrx: 2.2.8
+#  share_plus: 12.0.1
+#  markdown_widget: 2.3.2+8
+  get_it: 9.2.1
   speech_to_text: 7.3.0
 #  flutter_tts: 4.2.5
 
@@ -41,12 +41,12 @@ dependencies:
 #  /////////////////////////////////////////
 
   http: ^1.2.0
-  provider: ^6.1.2
-  fl_chart: ^0.68.0
-  google_fonts: ^6.2.1
-  shimmer: ^3.0.0
-  animated_text_kit: ^4.2.2
-  flutter_animate: ^4.5.0
+  provider: 6.1.5+1
+  fl_chart: 1.2.0
+  google_fonts: 8.0.2
+  shimmer: 3.0.0
+  animated_text_kit: 4.3.0
+  flutter_animate: 4.5.2
   gap: ^3.0.1
 #  /////////////////////////////////////////
 #  /////////////////////////////////////////
@@ -59,28 +59,28 @@ dependencies:
   data:
 
   # navigation
-  go_router: 16.2.4
-  flutter_svg: 2.2.1
+  go_router: 17.2.2
+  flutter_svg: 2.2.4
 
   #image picker
-  image_picker: 1.2.0
+#  image_picker: 1.2.0
 
 dev_dependencies:
 
   flutter_test:
     sdk: flutter
-  build_runner: 2.7.1
+  build_runner: 2.13.1
   flutter_lints: 6.0.0
   bloc_test: 10.0.0
   mocktail: 1.0.4
   faker: 2.2.0
 
   # tools
-  freezed: 3.2.0
-  injectable_generator: 2.8.1
+  freezed: 3.2.5
+  injectable_generator: 2.12.1
 
   # linter
-  analyzer: 7.7.1
+  analyzer: 10.0.1
 #  rename_app: 1.6.5
   flutter_launcher_icons: 0.14.4
 

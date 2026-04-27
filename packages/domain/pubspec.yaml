@@ -3,8 +3,8 @@ description: "Domain Module"
 version: 0.0.1
 
 environment:
-  sdk: 3.9.2
-  flutter: 3.35.3
+  sdk: 3.11.5
+  flutter: 3.41.8
 
 resolution: workspace
 dependencies:

@@ -1,0 +1,29 @@
+name: Test Cases
+
+on:
+  pull_request:
+    branches-ignore:
+      - master
+
+  push:
+    branches:
+      - develop
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.41.8'
+          channel: 'stable'
+          cache: true
+      - name: flutter pub get
+        run: make get
+      - name: start flutter test cases check
+        run: make test

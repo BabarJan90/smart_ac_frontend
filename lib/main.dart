@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -75,12 +74,12 @@ class _AppShellState extends State<AppShell> {
       selectedIcon: Icons.history,
       label: 'Audit Log',
     ),
-    if (!kIsWeb)
-      NavigationItem(
-        icon: Icons.mic_none,
-        selectedIcon: Icons.mic,
-        label: 'Assistant',
-      ),
+    // if (!kIsWeb)
+    NavigationItem(
+      icon: Icons.mic_none,
+      selectedIcon: Icons.mic,
+      label: 'Assistant',
+    ),
   ];
 
   @override
@@ -93,7 +92,8 @@ class _AppShellState extends State<AppShell> {
         BlocProvider(create: (_) => getIt<OrchestratorCubit>()),
         BlocProvider(create: (_) => getIt<DocumentsCubit>()),
         BlocProvider(create: (_) => getIt<AuditLogCubit>()),
-        if (!kIsWeb) BlocProvider(create: (_) => getIt<SpeechCubit>()),
+        // if (!kIsWeb)
+        BlocProvider(create: (_) => getIt<SpeechCubit>()),
       ],
       child: isWide ? _buildWideLayout() : _buildMobileLayout(),
     );
