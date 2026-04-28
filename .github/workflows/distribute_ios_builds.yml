@@ -1,0 +1,67 @@
+# .github/workflows/distribute_ios_builds.yml
+name: iOS App Build
+
+on:
+  # Callable from other workflows
+  workflow_call:
+    inputs:
+      version:
+        description: 'Version Number (e.g. 1.0.10)'
+        required: true
+        type: string
+      buildNumber:
+        description: 'Build Number (e.g. 82)'
+        required: true
+        type: string
+      buildType:
+        description: 'Build Type (Staging or Release)'
+        required: true
+        type: string
+
+run-name: "SmartAc - ${{ inputs.buildType }} Build ${{ inputs.version }}+${{ inputs.buildNumber }}"
+
+jobs:
+  mobile_app_build:
+    name: Build & Distribute iOS
+    runs-on: macos-26-large
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '26.2'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.41.8'
+          channel: 'stable'
+          cache: true
+
+      - name: flutter pub get
+        run: make get
+
+      - name: Install Ruby gems & CocoaPods
+        run: |
+          cd ios
+          bundle install
+          pod install --project-directory=.
+
+      - name: Build & Distribute via Fastlane
+        working-directory: ios
+        env:
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_PRIVATE_KEY: ${{ secrets.ASC_PRIVATE_KEY }}
+          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+          MATCH_KEYCHAIN_PASSWORD: ${{ secrets.MATCH_KEYCHAIN_PASSWORD }}
+          MATCH_GIT_BASIC_AUTHORIZATION: ${{ secrets.MATCH_GIT_BASIC_AUTHORIZATION }}
+          BUNDLE_ID: ${{ secrets.BUNDLE_ID }}
+          TEAM_ID: ${{ secrets.TEAM_ID }}
+        run: |
+          LANE=$(echo "${{ inputs.buildType }}" | tr '[:upper:]' '[:lower:]')
+          fastlane ios $LANE \
+            app_version:"${{ inputs.version }}" \
+            build_number:"${{ inputs.buildNumber }}" \
+            verbose:true
