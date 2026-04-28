@@ -1,0 +1,18 @@
+git_url("https://github.com/BabarJan90/ios-certificates")
+
+storage_mode("git")
+git_branch("main")
+
+type("appstore")
+keychain_name "login.keychain-db"
+keychain_password ENV["MATCH_KEYCHAIN_PASSWORD"]
+
+username("muhammad.babar.nust@gmail.com") # Your Apple Developer Portal username
+
+team_id("J89ZCWT9TH")
+
+app_identifier([
+	"ai.smart.ac"
+])
+
+
