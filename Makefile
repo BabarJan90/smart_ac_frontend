@@ -16,6 +16,7 @@ init: get gen
 	cd app/ios && pod update && pod install
 	@echo "${G}Finished Project Setup${NOCOLOR}"
 
+# this make gen that run build runner
 gen:
 	@for file in $(PUBSPEC_FILES); do \
 		cd $${file%pubspec.yaml} && \
